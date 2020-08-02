@@ -1,3 +1,3 @@
-# UnityScripts
+# UnityAssets
 
-This will contain a collection of reusable scripts for quick access during game jams or whatever.
+This will contain a collection of reusable scripts and assets for quick access during game jams or whatever.
