@@ -2,43 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatSprite : MonoBehaviour
+namespace Kok
 {
-    private Transform cameraTransform;
-    private Vector3 lastCameraPosition;
-    private float textureUnitSizeX;
-    private float textureUnitSizeY;
-
-    public bool repeatX = true;
-    public bool repeatY = false;
-
-    void Start()
+    public class RepeatSprite : MonoBehaviour
     {
-        cameraTransform = Camera.main.transform;
-        lastCameraPosition = cameraTransform.position; 
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        Texture2D texture = sprite.texture;
-        textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
-        textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
-    }
+        private Transform cameraTransform;
+        private Vector3 lastCameraPosition;
+        private float textureUnitSizeX;
+        private float textureUnitSizeY;
 
-    void LateUpdate()
-    {
-        lastCameraPosition = cameraTransform.position; 
-        if (repeatX)
+        public bool repeatX = true;
+        public bool repeatY = false;
+
+        void Start()
         {
-            if(Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureUnitSizeX) {
-                float offsetPositionX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
-                transform.position = new Vector3(cameraTransform.position.x + offsetPositionX, transform.position.y);
-            }
+            cameraTransform = Camera.main.transform;
+            lastCameraPosition = cameraTransform.position;
+            Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+            Texture2D texture = sprite.texture;
+            textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
+            textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
         }
 
-        if (repeatY)
+        void LateUpdate()
         {
-            if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureUnitSizeY)
+            lastCameraPosition = cameraTransform.position;
+            if (repeatX)
             {
-                float offsetPositionY = (cameraTransform.position.y - transform.position.y) % textureUnitSizeY;
-                transform.position = new Vector3(cameraTransform.position.x, transform.position.y + offsetPositionY);
+                if (Mathf.Abs(cameraTransform.position.x - transform.position.x) >= textureUnitSizeX)
+                {
+                    float offsetPositionX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
+                    transform.position = new Vector3(cameraTransform.position.x + offsetPositionX, transform.position.y);
+                }
+            }
+
+            if (repeatY)
+            {
+                if (Mathf.Abs(cameraTransform.position.y - transform.position.y) >= textureUnitSizeY)
+                {
+                    float offsetPositionY = (cameraTransform.position.y - transform.position.y) % textureUnitSizeY;
+                    transform.position = new Vector3(cameraTransform.position.x, transform.position.y + offsetPositionY);
+                }
             }
         }
     }

@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public abstract class AudioEvent : ScriptableObject
+namespace Kok
 {
-	public abstract void Play(AudioSource source);
+    public abstract class AudioEvent : ScriptableObject
+    {
+        public abstract void Play(AudioSource source);
+    }
 }
