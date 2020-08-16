@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-namespace Kok
+namespace Kok.Editor
 {
     [CustomPropertyDrawer(typeof(RangedFloat), true)]
     public class RangedFloatDrawer : PropertyDrawer

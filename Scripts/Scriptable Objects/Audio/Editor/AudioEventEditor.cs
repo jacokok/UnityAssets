@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-namespace Kok
+namespace Kok.Editor
 {
     [CustomEditor(typeof(AudioEvent), true)]
     public class AudioEventEditor : Editor
